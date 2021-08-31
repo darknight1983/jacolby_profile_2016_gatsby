@@ -3,6 +3,7 @@
 // easy to work with for the time being.
 
 import React from 'react';
+import { Link } from 'gatsby';
 import { makeStyles } from '@material-ui/core/styles';
 import ProfilePic from '../components/ProfilePic'
 import {
@@ -12,8 +13,9 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import EmailIcon from '@material-ui/icons/Email';
 import styled, { keyframes } from 'styled-components';
-import { tada, zoomInUp } from 'react-animations';
+import { tada, zoomInUp, fadeInLeftBig } from 'react-animations';
 import SEO from '../components/seo';
+import * as indexStyles from "../components/index.module.css";
 
 const tadaAnimation = keyframes`${tada}`;
 const TadaHeading = styled.h1`
@@ -27,12 +29,16 @@ const ZoomInUpDiv = styled.h2`
   animation: infinite 5s ${ZoomInUpAnimation};
 `;
 
+const FadinAnimation = keyframes`${fadeInLeftBig}`;
+const FadeinDiv = styled.div`
+  animation: 3s ${FadinAnimation};
+`;
+
 
 
 
 const useStyles = makeStyles(theme => ({
   grid1: {
-
     backgroundColor: "#F4F4F4",
   },
   name: {
@@ -58,6 +64,17 @@ const useStyles = makeStyles(theme => ({
   },
   darkPurple: {
     color: '#800080'
+  },
+  clickButton: {
+    cursor: 'pointer',
+    backgroundColor: 'darkgreen',
+    width: '100',
+    height: '100',
+  },
+  linkButton: {
+    backgroundColor: 'armyGreen',
+    width: 'auto',
+    height: 'auto',
   }
 }))
 const Home = () => {
@@ -80,6 +97,11 @@ const Home = () => {
               because I would love to talk with you and ponder on how to get your
               idea out to the world.
             </p>
+            <FadeinDiv>
+              <Link to="/consultation">
+                <button className={[indexStyles.button, indexStyles.coolButton].join(" ")}><span>Let's Talk!</span></button>
+              </Link>
+            </FadeinDiv>
             <div className={classes.socialIconWrap}>
               <Grid container xs={12} justify={'space-evenly'}>
                 <Grid item>
